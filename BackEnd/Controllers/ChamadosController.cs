@@ -203,5 +203,44 @@ namespace BackEnd.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarChamado(
+            int id,
+            [FromQuery] int usuarioId,
+            [FromQuery] TipoUsuario tipoUsuario)
+        {
+            // Somente Admin pode excluir
+            if (tipoUsuario != TipoUsuario.Admin)
+            {
+                return Forbid();
+            }
+
+            var admin = await _context.Admins
+                .FirstOrDefaultAsync(a =>
+                    a.Id == usuarioId &&
+                    a.Ativo);
+
+            if (admin == null)
+            {
+                return Forbid();
+            }
+
+            var chamado = await _context.Chamados.FindAsync(id);
+
+            if (chamado == null)
+            {
+                return NotFound(new
+                {
+                    mensagem = "Chamado não encontrado."
+                });
+            }
+
+            _context.Chamados.Remove(chamado);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

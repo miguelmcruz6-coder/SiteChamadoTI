@@ -21,5 +21,10 @@ namespace BackEnd.Models
         public StatusChamado Status { get; set; }
 
         public DateTime DataCriacao { get; set; }
+
+        
+        public int? ResponsavelId { get; set; }
+
+        public TipoUsuario? TipoResponsavel { get; set; }
     }
 }

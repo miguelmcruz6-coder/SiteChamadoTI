@@ -11,5 +11,11 @@ namespace BackEnd.DTOs
     {
         [Required]
         public StatusChamado Status { get; set; }
+
+        [Required]
+        public int UsuarioId { get; set; }
+
+        [Required]
+        public TipoUsuario TipoUsuario { get; set; }
     }
 }

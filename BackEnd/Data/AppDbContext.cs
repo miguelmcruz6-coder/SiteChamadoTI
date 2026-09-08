@@ -11,5 +11,7 @@ namespace BackEnd.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){}
         public DbSet<Chamado> Chamados {get; set;}
+        public DbSet<Admin> Admins {get; set;}
+        public DbSet<Estagiario> Estagiarios {get; set;}
     }
 }
