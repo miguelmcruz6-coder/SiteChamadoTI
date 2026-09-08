@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Css/style.css" />
+    <title>Chamados</title>
+  </head>
+  <body>
+    <header class="menu-lateral">
+      <div id="titulo-menu">
+        <p>Suporte TI</p>
+      </div>
+
+      <div id="dados-usuario">
+        <strong id="nome-usuario">Usuário</strong>
+        <span id="perfil-usuario">Perfil</span>
+      </div>
+
+      <nav id="opcoes-menu">
+        <button type="button" class="botao-menu-ativo" data-secao="novo=chamado">Novo chamado</button>
+        <button type="button" class="botao-menu" data-secao="chamados">Chamados</button>
+        <button type="button" class="botao-menu" data-secao="concluidos">Chamados concluidos</button>
+        <button type="button" class="botao-menu" data-secao="cadastro-equipe">Cadastro da equipe</button>
+      </nav>
+
+      <div id="opcoes-conta">
+        <button type="button" id="botao-excluir-conta">Excluir conta</button>
+        <button type="button" id="botao-sair">Sair</button>
+      </div>
+    </header>
+    <main>
+      <div id="cabecalho-conteudo">
+        <div>
+          <h2 id="titulo-pagina">Novo chamado</h2>
+          <p id="subtitulo-pagina">Abra uma solicitação de suporte técnico.</p>
+        </div>
+        <button type="button" id="botao-abrir-menu">Menu</button>
+      </div>
+
+      <p id="mensagem" aria-live="polite" style="display: none"></p>
+      <p id="carregando" style="display: none">Carregando...</p>
+
+      <section id="novo-chamado" class="secao-ativa">
+        <div class="painel">
+          <h2>Abrir novo chamado</h2>
+
+          <form id="form-chamado">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" placeholder="Título do chamado" minlength="5" required />
+
+            <label for="cateoria">Categoria</label>
+            <select id="categoria" required>
+              <option value="">Selecione uma categoria</option>
+              <option value="0">Hardware</option>
+              <option value="1">Software</option>
+              <option value="2">Rede</option>
+              <option value="3">Segurança</option>
+              <option value="4">Sistema</option>
+              <option value="5">Banco de dados</option>
+              <option value="6">Suporte Geral</option>
+            </select>
+
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" rows="6" minlength="10" placeholder="Descreva o problema" required></textarea>
+
+            <button type="submit" id="botao-criar-chamado">Abrir chamado</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="chamados" class="secao">
+        <div id="cabecalho-secao">
+          <div>
+            <h2>Chamados</h2>
+            <p>Acompanhe os chamados disponíveis.</p>
+          </div>
+
+          <div id="area-filtro">
+            <label for="filtro-status">Filtar por status</label>
+            <select id="filtro-status">
+              <option value="">Todos</option>
+              <option value="Pendente">Pendente</option>
+              <option value="emAndamento">Em Andamento</option>
+              <option value="Resolvido">Resolvido</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="lista-chamados">
+          <p class="lista-vazia">Nenhum chamado carregado.</p>
+        </div>
+      </section>
+
+      <section id="concluidos" class="secao">
+        <div class="cabecalho-secao">
+          <div>
+            <h2>Chamados concluídos</h2>
+            <p>Chamados resolvidos</p>
+          </div>
+        </div>
+
+        <div id="lista-concluidos">
+          <p class="lista-vazia">Nenhum chamado concluído.</p>
+        </div>
+      </section>
+
+      <section id="cadastro-equipe" class="secao">
+        <div class="painel">
+          <h2>Cadastrar integrante</h2>
+
+          <form id="form-equipe">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome-equipe" placeholder="Nome completo" required />
+
+            <label for="email-equipe">E-mail</label>
+            <input type="text" id="email-equipe" placeholder="E-mail" required />
+
+            <label for="usuario-equipe">Usuário</label>
+            <input type="text" id="usuario-equipe" placeholder="Usuário" required />
+
+            <label for="senha-equipe">Senha</label>
+            <input type="text" id="senha-equipe" placeholder="Senha" minlength="8" required />
+
+            <label for="confirmar-senha-equipe">Confirmar senha</label>
+            <input type="text" id="confirmar-senha-equipe" placeholder="Confirmar senha" minlength="8" required />
+
+            <label for="perfil-equipe">Perfil</label>
+            <select id="perfil-equipe" required>
+              <option value="">Selecione um pefil</option>
+              <option value="Estagiario">Estagiário</option>
+              <option value="Admin">Admin</option>
+            </select>
+
+            <button type="submit" id="botao-cadastrar-equipe">Cadastrar integrante</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>

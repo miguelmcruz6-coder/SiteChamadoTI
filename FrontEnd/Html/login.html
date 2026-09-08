@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../Css/login.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <header id="apresentação-login">
+      <div>
+        <h1>Suporte TI</h1>
+        <p>Organize, acompanhe e resolva chamados de suporte técnico.</p>
+      </div>
+    </header>
+
+    <main>
+      <section id="area-login">
+        <div id="cabecalho-login">
+          <h2>Entrar</h2>
+          <p>Informe sos dados necessários.</p>
+        </div>
+
+        <form id="form-login">
+          <label for="usuario">Usuário</label>
+          <input type="text" id="usuario" placeholder="Usuário" autocomplete="username" required />
+
+          <label for="senha">Senha</label>
+          <input type="text" id="senha" placeholder="Senha" autocomplete="current-password" required />
+
+          <p id="mensagem-login" aria-live="polite" style="display: none"></p>
+          <p id="carregando-login" style="display: none">Entrando...</p>
+
+          <button type="submit" id="botao-login">Entar</button>
+        </form>
+
+        <p id="link-cadastro">
+          Ainda não possui uma conta?
+          <a href="cadastro.html">Cadastre-se</a>
+        </p>
+      </section>
+    </main>
+    <script src="../Js/login.js"></script>
+  </body>
+</html>
