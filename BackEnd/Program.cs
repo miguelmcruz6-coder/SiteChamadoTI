@@ -1,25 +1,61 @@
+
+using Microsoft.EntityFrameworkCore;
+using BackEnd.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ========================================
+// SERVICES
+// ========================================
 
+// Controllers
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Entity Framework Core + SQL Server
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+    )
+);
+
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// ========================================
+// CORS
+// ========================================
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ========================================
+// HTTP PIPELINE
+// ========================================
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// HTTPS
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// CORS
+app.UseCors("Frontend");
 
+// Controllers
 app.MapControllers();
 
 app.Run();
